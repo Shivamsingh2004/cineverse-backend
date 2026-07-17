@@ -8,6 +8,10 @@ import movieRoutes from './routes/movies.js';
 dotenv.config();
 connectDB();
 const app = express();
+
+// Trust proxy is required for secure cookies when behind a reverse proxy like Render
+app.set('trust proxy', 1);
+
 app.use(cors({
   origin: process.env.CLIENT_URL || 'http://localhost:5173',
   credentials: true,
